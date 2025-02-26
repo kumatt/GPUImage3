@@ -23,6 +23,7 @@
 		BC3592D71CBDDF6600DF8ACA /* lookup_soft_elegance_2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3592D31CBDDF6600DF8ACA /* lookup_soft_elegance_2.png */; };
 		BC645A172B812E93007F680F /* GPUImage in Frameworks */ = {isa = PBXBuildFile; productRef = BC645A162B812E93007F680F /* GPUImage */; };
 		BC7F5B6F1CBEEB4F00C39D33 /* Lambeau.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC7F5B6E1CBEEB4F00C39D33 /* Lambeau.jpg */; };
+		D1A375982D6EA0E500CF5934 /* ImageDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A375972D6EA0E500CF5934 /* ImageDropView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +56,7 @@
 		BC3592D21CBDDF6600DF8ACA /* lookup_soft_elegance_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_soft_elegance_1.png; path = ../../../Sources/GPUImage/Operations/LookupImages/lookup_soft_elegance_1.png; sourceTree = "<group>"; };
 		BC3592D31CBDDF6600DF8ACA /* lookup_soft_elegance_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_soft_elegance_2.png; path = ../../../Sources/GPUImage/Operations/LookupImages/lookup_soft_elegance_2.png; sourceTree = "<group>"; };
 		BC7F5B6E1CBEEB4F00C39D33 /* Lambeau.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Lambeau.jpg; path = ../../SharedAssets/Lambeau.jpg; sourceTree = "<group>"; };
+		D1A375972D6EA0E500CF5934 /* ImageDropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDropView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 		BC1E133D1C9F82B4008F844F /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				D1A375972D6EA0E500CF5934 /* ImageDropView.swift */,
 				BC1E133E1C9F82B4008F844F /* AppDelegate.swift */,
 				BC1E135B1C9F8419008F844F /* FilterShowcaseWindowController.swift */,
 				BC1E135C1C9F8419008F844F /* FilterShowcaseWindowController.xib */,
@@ -226,6 +229,7 @@
 				BC1E133F1C9F82B4008F844F /* AppDelegate.swift in Sources */,
 				BC1E135F1C9F8419008F844F /* FilterShowcaseWindowController.swift in Sources */,
 				BC1E135D1C9F8419008F844F /* FilterOperations.swift in Sources */,
+				D1A375982D6EA0E500CF5934 /* ImageDropView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +374,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.redqueencoder.FilterShowcase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -387,6 +392,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.redqueencoder.FilterShowcase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
