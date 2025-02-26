@@ -28,6 +28,10 @@ class FilterShowcaseWindowController: NSWindowController {
             }
         }
     }
+    
+    @IBAction func Save(_ sender: Any) {
+        saveRenderTextureToPhotoLibrary()
+    }
 
     var currentFilterOperation: FilterOperationInterface?
 //    var videoCamera: Camera!
@@ -152,3 +156,75 @@ class FilterShowcaseWindowController: NSWindowController {
         }
     }
 }
+
+extension FilterShowcaseWindowController {
+    
+    func saveCGImage(_ cgImage: CGImage) {
+        // 创建 NSSavePanel 让用户选择保存路径
+        let savePanel = NSSavePanel()
+        savePanel.nameFieldStringValue = "SavedImage.png"
+        savePanel.allowedFileTypes = ["png"]
+        
+        savePanel.begin { result in
+            guard result == .OK, let url = savePanel.url else {
+                print("用户取消保存")
+                return
+            }
+            
+            // 指定图片类型为 PNG
+            let imageType: CFString
+            if #available(macOS 11.0, *) {
+                imageType = UTType.png.identifier as CFString
+            } else {
+                imageType = kUTTypePNG
+            }
+            
+            // 创建 CGImageDestination 对象
+            guard let destination = CGImageDestinationCreateWithURL(url as CFURL, imageType, 1, nil) else {
+                print("无法创建 CGImageDestination")
+                return
+            }
+            
+            // 将 CGImage 添加到 destination 中
+            CGImageDestinationAddImage(destination, cgImage, nil)
+            
+            // 完成写入，保存图片
+            if CGImageDestinationFinalize(destination) {
+                print("图片保存成功，路径：\(url.path)")
+            } else {
+                print("图片保存失败")
+            }
+        }
+    }
+    
+    // 假设 renderView 是你的 RenderView 实例
+    // 假设 finalTexture 是从 RenderView 获取的 MTLTexture
+    @objc func saveRenderTextureToPhotoLibrary() {
+        FilterShowcaseWindowController.inputImage.processImage()
+        guard let texture = filterView?.currentDrawable?.texture else {
+            return
+        }
+        
+        // 创建一个 CIImage
+        // 使用 Core Image 转换图像，并应用方向调整
+        let ciImage = CIImage(mtlTexture: texture, options: nil)!.oriented(.downMirrored)
+        let context = CIContext(options: [kCIContextWorkingColorSpace: CGColorSpaceCreateDeviceRGB()])
+
+        // 创建一个 CIContext
+//        let context = CIContext()
+        
+        // 创建一个 CGImage
+        guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else {
+            print("Failed to create CGImage")
+            return
+        }
+        
+        saveCGImage(cgImage)
+//        // 将 CGImage 转换为 UIImage
+//        let image = UIImage(cgImage: cgImage)
+//
+//        // 保存 UIImage 到相册
+//        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+    }
+}
+

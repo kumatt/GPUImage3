@@ -99,6 +99,16 @@
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="7Hj-Yu-a3T"/>
                     </imageView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xFg-j6-KbP">
+                        <rect key="frame" x="748" y="470" width="93" height="32"/>
+                        <buttonCell key="cell" type="push" title="download" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JPU-mS-dBh">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="Save:" target="-2" id="Lx2-R2-wsx"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="GNd-qF-oN7" firstAttribute="leading" secondItem="iqs-T1-2Js" secondAttribute="trailing" constant="8" symbolic="YES" id="BfM-rf-iRC"/>
@@ -108,8 +118,10 @@
                     <constraint firstItem="iqs-T1-2Js" firstAttribute="top" secondItem="GNd-qF-oN7" secondAttribute="top" id="IQd-Gy-vMr"/>
                     <constraint firstAttribute="trailing" secondItem="Pxo-Ij-5EP" secondAttribute="trailing" constant="20" id="Qbe-Ac-NbS"/>
                     <constraint firstItem="GNd-qF-oN7" firstAttribute="trailing" secondItem="HWq-wN-ZI8" secondAttribute="trailing" id="XgQ-9p-DaI"/>
+                    <constraint firstAttribute="trailing" secondItem="xFg-j6-KbP" secondAttribute="trailing" constant="20" symbolic="YES" id="ZMF-E9-Pif"/>
                     <constraint firstAttribute="bottom" secondItem="gnb-mk-xdg" secondAttribute="bottom" constant="57" id="ZaG-3p-NSp"/>
                     <constraint firstItem="HWq-wN-ZI8" firstAttribute="top" secondItem="GNd-qF-oN7" secondAttribute="bottom" constant="17" id="bQv-3V-TaH"/>
+                    <constraint firstItem="xFg-j6-KbP" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="56" id="c8G-JC-Zpg"/>
                     <constraint firstItem="iqs-T1-2Js" firstAttribute="bottom" secondItem="HWq-wN-ZI8" secondAttribute="bottom" id="eVO-ad-j3h"/>
                     <constraint firstItem="Pxo-Ij-5EP" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="gy8-yC-E7Z"/>
                     <constraint firstAttribute="trailing" secondItem="gnb-mk-xdg" secondAttribute="trailing" constant="20" symbolic="YES" id="hzC-fC-G9S"/>
