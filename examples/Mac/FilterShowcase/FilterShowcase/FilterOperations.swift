@@ -16,7 +16,7 @@ let filterOperations: [FilterOperationInterface] = [
         filter: { FishEyeFilter() },
         listName: "FisheyeFilter",
         titleName: "strength",
-        sliderConfiguration: .enabled(minimumValue: 0.2, maximumValue: 1.0, initialValue: 0.65),
+        sliderConfiguration: .enabled(minimumValue: 0.2, maximumValue: 2.0, initialValue: 0.65),
         sliderUpdateCallback: { (filter, sliderValue) in
             filter.strength = sliderValue
         },
