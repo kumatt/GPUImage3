@@ -3,6 +3,26 @@ import QuartzCore
 
 let filterOperations: [FilterOperationInterface] = [
     FilterOperation(
+        filter: { MultiplyBlendAndOpacity() },
+        listName: "multiplyBlend & OpacityEdit",
+        titleName: "Saturation",
+        sliderConfiguration: .enabled(minimumValue: 0.0, maximumValue: 1.0, initialValue: 1.0),
+        sliderUpdateCallback: { (filter, sliderValue) in
+            filter.opacity = sliderValue
+        },
+        filterOperationType: .blend
+    ),
+    FilterOperation(
+        filter: { FishEyeFilter() },
+        listName: "FisheyeFilter",
+        titleName: "strength",
+        sliderConfiguration: .enabled(minimumValue: 0.2, maximumValue: 2.0, initialValue: 0.65),
+        sliderUpdateCallback: { (filter, sliderValue) in
+            filter.strength = sliderValue
+        },
+        filterOperationType: .singleInput
+    ),
+    FilterOperation(
         filter: { SaturationAdjustment() },
         listName: "Saturation",
         titleName: "Saturation",
@@ -605,26 +625,26 @@ let filterOperations: [FilterOperationInterface] = [
         sliderUpdateCallback: nil,
         filterOperationType: .singleInput
     ),
-    FilterOperation(
-        filter: { LowPassFilter() },
-        listName: "Low pass",
-        titleName: "Low Pass",
-        sliderConfiguration: .enabled(minimumValue: 0.0, maximumValue: 1.0, initialValue: 0.5),
-        sliderUpdateCallback: { (filter, sliderValue) in
-            filter.strength = sliderValue
-        },
-        filterOperationType: .singleInput
-    ),
-    FilterOperation(
-        filter: { HighPassFilter() },
-        listName: "High pass",
-        titleName: "High Pass",
-        sliderConfiguration: .enabled(minimumValue: 0.0, maximumValue: 1.0, initialValue: 0.5),
-        sliderUpdateCallback: { (filter, sliderValue) in
-            filter.strength = sliderValue
-        },
-        filterOperationType: .singleInput
-    ),
+//    FilterOperation(
+//        filter: { LowPassFilter() },
+//        listName: "Low pass",
+//        titleName: "Low Pass",
+//        sliderConfiguration: .enabled(minimumValue: 0.0, maximumValue: 1.0, initialValue: 0.5),
+//        sliderUpdateCallback: { (filter, sliderValue) in
+//            filter.strength = sliderValue
+//        },
+//        filterOperationType: .singleInput
+//    ),
+//    FilterOperation(
+//        filter: { HighPassFilter() },
+//        listName: "High pass",
+//        titleName: "High Pass",
+//        sliderConfiguration: .enabled(minimumValue: 0.0, maximumValue: 1.0, initialValue: 0.5),
+//        sliderUpdateCallback: { (filter, sliderValue) in
+//            filter.strength = sliderValue
+//        },
+//        filterOperationType: .singleInput
+//    ),
     //    // TODO: Motion detector
     //
     FilterOperation(
