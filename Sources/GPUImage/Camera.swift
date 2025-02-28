@@ -81,6 +81,8 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
     var totalFrameTimeDuringCapture: Double = 0.0
     var framesSinceLastCheck = 0
     var lastCheckTime = CFAbsoluteTimeGetCurrent()
+    
+    var currentTexture: Texture?
 
     public init(
         sessionPreset: AVCaptureSession.Preset, cameraDevice: AVCaptureDevice? = nil,
@@ -293,7 +295,7 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
                     texture = nil
                 }
             }
-
+            self.currentTexture = texture
             if texture != nil {
                 self.updateTargetsWithTexture(texture!)
             }
@@ -347,5 +349,16 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
 
     public func transmitPreviousImage(to target: ImageConsumer, atIndex: UInt) {
         // Not needed for camera
+    }
+}
+
+extension Camera {
+    public func processRendering() {
+        let _ = frameRenderingSemaphore.wait(timeout: DispatchTime.distantFuture)
+        // 手动触发渲染流程
+        if let currentTexture {
+            self.updateTargetsWithTexture(currentTexture)
+        }
+        self.frameRenderingSemaphore.signal()
     }
 }
