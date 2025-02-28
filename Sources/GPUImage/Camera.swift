@@ -191,13 +191,6 @@ public class Camera: NSObject, ImageSource, AVCaptureVideoDataOutputSampleBuffer
         videoOutput.setSampleBufferDelegate(self, queue: cameraProcessingQueue)
     }
 
-    deinit {
-        cameraFrameProcessingQueue.sync {
-            self.stopCapture()
-            self.videoOutput?.setSampleBufferDelegate(nil, queue: nil)
-        }
-    }
-
     public func captureOutput(
         _ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer,
         from connection: AVCaptureConnection
